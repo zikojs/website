@@ -1,14 +1,16 @@
-// @ts-no-check
+// @ts-nocheck
+
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
 import netlify from "@astrojs/netlify";
+
+// import { createSidebar } from "./src/utils/starlight-sidebar.js";
+
 // import ziko from "ziko-wrapper/astro";
 // import starlightGitHubAlerts from "starlight-github-alerts";
 // import starlightThemeObsidian from "starlight-theme-obsidian";
 // import mermaid from "astro-mermaid";
 // import astroD2 from "astro-d2";
-
-import { mapfun } from 'ziko/math'
 
 const ReferenceStructure = {
   core: {
@@ -54,103 +56,66 @@ const ReferenceStructure = {
           ar: "الرياضيات",
         },
       },
+
+      router: {
+        translations: {
+          en: "Router",
+          ar: "الموجّه",
+        },
+      },
+
+      time: {
+        translations: {
+          en: "Time",
+          ar: "الوقت",
+        },
+      },
+
+      hooks: {
+        translations: {
+          en: "Hooks",
+          ar: "الخطافات",
+        },
+      },
+
+      events: {
+        translations: {
+          en: "Events",
+          ar: "الأحداث",
+        },
+      },
+    },
+  },
+
+  wrapper: {
+    translations: {
+      en: "Wrapper",
+      ar: "المغلّف",
+    },
+  },
+
+  server: {
+    translations: {
+      en: "Server",
+      ar: "الخادم",
     },
   },
 };
 
-
-// function createSidebarItems(
-//   structure,
-//   locale = "en",
-//   parentDirectory = "reference",
-// ) {
-//   return Object.entries(structure).map(([name, config]) => {
-//     const directory = `${parentDirectory}/${name}`;
-
-//     const translations = Object.fromEntries(
-//       Object.entries(config.translations)
-//         .filter(([lang]) => lang !== locale)
-//     );
-
-//     const item = {
-//       label: config.translations[locale],
-//       ...(Object.keys(translations).length > 0 && {
-//         translations,
-//       }),
-//     };
-
-//     if (config.items) {
-//       item.items = createSidebarItems(
-//         config.items,
-//         locale,
-//         directory,
-//       );
-//     } else {
-//       item.items = [
-//         {
-//           autogenerate: {
-//             directory,
-//           },
-//         },
-//       ];
-//     }
-
-//     return item;
-//   });
-// }
-
-const createSidebarItems = (
-  structure,
-  locale = "en",
-  parentDirectory = "reference",
-) =>
-  mapfun(
-    (config, name) => {
-      const directory = `${parentDirectory}/${name}`;
-
-      const translations = config.translations;
-
-      const item = {
-        label: translations[locale],
-        translations: Object.fromEntries(
-          Object.entries(translations).filter(
-            ([lang]) => lang !== locale
-          )
-        ),
-      };
-
-      if (config.items) {
-        item.items = createSidebarItems(
-          config.items,
-          locale,
-          directory
-        );
-      } else {
-        item.items = [
-          {
-            autogenerate: {
-              directory,
-            },
-          },
-        ];
-      }
-
-      return item;
-    },
-    structure
-  );
-
-const Reference = {
+const Reference = createSidebar({
   label: "Reference",
 
   translations: {
+    en: "Reference",
     ar: "المرجع",
   },
 
-  items: createSidebarItems(ReferenceStructure),
-};
+  items: ReferenceStructure,
 
-// https://astro.build/config
+  locale: "en",
+  rootDirectory: "reference",
+});
+
 export default defineConfig({
   integrations: [
     starlight({
@@ -204,3 +169,96 @@ export default defineConfig({
 
   adapter: netlify(),
 });
+
+
+import { mapfun } from "ziko/math";
+
+/**
+ * Transforms a node or primitive into a Starlight-compatible sidebar item.
+ *
+ * @param {object} node - A single item node from ReferenceStructure
+ * @param {string} currentPath - Current path accumulator
+ * @param {string} locale - Default fallback locale
+ */
+function transformNode(node, currentPath, locale) {
+  // Extract translations and nested items
+  const { translations = {}, items } = node;
+
+  // Starlight label resolution logic
+  const label = translations[locale] ?? "";
+  const translatedLabels = Object.fromEntries(
+    Object.entries(translations).filter(([lang]) => lang !== locale)
+  );
+
+  const starlightItem = {
+    label,
+    ...(Object.keys(translatedLabels).length > 0 && {
+      translations: translatedLabels,
+    }),
+  };
+
+  if (items) {
+    // Has child groups: recursively map through items
+    starlightItem.items = mapSidebarItems(items, currentPath, locale);
+  } else {
+    // Leaf node: set autogenerate directory path
+    starlightItem.items = [
+      {
+        autogenerate: {
+          directory: currentPath,
+        },
+      },
+    ];
+  }
+
+  return starlightItem;
+}
+
+/**
+ * Maps a nested structure object into an array of Starlight sidebar items using mapfun.
+ */
+export function createSidebarItems(
+  structure,
+  { locale = "en", rootDirectory = "reference" } = {}
+) {
+  return mapSidebarItems(structure, rootDirectory, locale);
+}
+
+function mapSidebarItems(structure, parentPath, locale) {
+  // 1. Pass a function to mapfun that constructs paths per key/node pair
+  const mappedObj = mapfun((val) => val, structure);
+
+  // 2. Convert mapfun's resulting Object tree into Starlight's Array format
+  return Object.entries(mappedObj).map(([key, val]) => {
+    const currentPath = `${parentPath}/${key}`;
+    return transformNode(val, currentPath, locale);
+  });
+}
+
+/**
+ * Creates the top-level Starlight sidebar configuration section.
+ */
+export function createSidebar({
+  label,
+  translations = {},
+  items,
+  locale = "en",
+  rootDirectory = "reference",
+}) {
+  const translatedLabels = Object.fromEntries(
+    Object.entries(translations).filter(([lang]) => lang !== locale)
+  );
+
+  return {
+    label: translations[locale] ?? label,
+
+    ...(Object.keys(translatedLabels).length > 0 && {
+      translations: translatedLabels,
+    }),
+
+    items: createSidebarItems(items, {
+      locale,
+      rootDirectory,
+    }),
+  };
+}
