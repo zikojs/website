@@ -4,6 +4,7 @@ import starlight from "@astrojs/starlight";
 // import ziko from "ziko-wrapper/astro"
 // import starlightGitHubAlerts from 'starlight-github-alerts'
 import starlightThemeObsidian from "starlight-theme-obsidian";
+import netlify from "@astrojs/netlify";
 // import mermaid from "astro-mermaid";
 // import astroD2 from 'astro-d2'
 
@@ -94,4 +95,6 @@ export default defineConfig({
       }),
       // astroD2({}),
   ],
+
+  adapter: netlify()
 });
