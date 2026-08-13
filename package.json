@@ -11,11 +11,12 @@
     "dev:docs": "npm run dev -w docs",
     "dev:blog": "npm run dev -w blog",
     "dev:repl": "npm run dev -w repl",
-
     "build:docs": "npm run build -w docs",
     "build:blog": "npm run build -w blog",
     "build:repl": "npm run build -w repl",
-
     "build": "npm run build:docs && npm run build:blog && npm run build:repl"
+  },
+  "dependencies": {
+    "starlight-sidebar": "^0.1.0"
   }
 }
