@@ -43,10 +43,6 @@ export default defineConfig({
               },
           },
           plugins: [
-              // starlightThemeObsidian({
-              // 	graph: false
-              // })
-              // starlightGitHubAlerts(),
           ],
           customCss: ["./src/styles/custom.css"],
           social: [
@@ -74,13 +70,29 @@ export default defineConfig({
 
                           }
                       },
-                      {
-                          label: "reference",
-                          collapsed: true,
-                          items: CoreReference.map((label) => ({
-                              autogenerate: { directory: `core/reference/${label}` },
-                          })),
-                      },
+                    //   {
+                    //       label: "reference",
+                    //       collapsed: true,
+                    //       items: CoreReference.map((label) => ({
+                    //           autogenerate: { directory: `core/reference/${label}` },
+                    //       })),
+                    //   },
+
+                    {
+      label: "Reference",
+      collapsed: true,
+      items: CoreReference.map((label) => ({
+        label,
+        items: [
+          {
+            autogenerate: {
+              directory: `core/reference/${label}`,
+            },
+          },
+        ],
+      })),
+    },
+                      
                   ],
               },
               {
