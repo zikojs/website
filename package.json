@@ -1,5 +1,5 @@
 {
-  "name": "docs",
+  "name": "website",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -12,6 +12,10 @@
   "dependencies": {
     "@astrojs/starlight": "^0.41.7",
     "astro": "^7.1.6",
-    "sharp": "^0.35.3"
+    "sharp": "^0.35.3",
+    "starlight-theme-obsidian": "^0.4.1",
+    "zextra": "^1.13.0",
+    "ziko": "^1.8.0",
+    "ziko-wrapper": "^0.35.0"
   }
 }
