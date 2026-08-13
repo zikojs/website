@@ -1,113 +1,205 @@
-// @ts-check
+// @ts-no-check
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
-// import ziko from "ziko-wrapper/astro"
-// import starlightGitHubAlerts from 'starlight-github-alerts'
-import starlightThemeObsidian from "starlight-theme-obsidian";
 import netlify from "@astrojs/netlify";
+// import ziko from "ziko-wrapper/astro";
+// import starlightGitHubAlerts from "starlight-github-alerts";
+// import starlightThemeObsidian from "starlight-theme-obsidian";
 // import mermaid from "astro-mermaid";
-// import astroD2 from 'astro-d2'
+// import astroD2 from "astro-d2";
 
-const CoreReference = ["ui", "math", "router", "time", "hooks", "events"];
-const CoreTranslations = {
-  ar: {
-    ui: "واجهة المستخدم",
-    math: "الرياضيات",
-    router: "الموجّه",
-    time: "الوقت",
-    hooks: "الخطافات",
-    events: "الأحداث",
+import { mapfun } from 'ziko/math'
+
+const ReferenceStructure = {
+  core: {
+    translations: {
+      en: "Core",
+      ar: "النواة",
+    },
+
+    items: {
+      ui: {
+        translations: {
+          en: "UI",
+          ar: "واجهة المستخدم",
+        },
+
+        items: {
+          "built-in-components": {
+            translations: {
+              en: "Built-in Components",
+              ar: "المكونات المدمجة",
+            },
+          },
+
+          "ui-constructors": {
+            translations: {
+              en: "UI Constructors",
+              ar: "منشئات واجهة المستخدم",
+            },
+          },
+
+          utilities: {
+            translations: {
+              en: "Utilities",
+              ar: "الأدوات المساعدة",
+            },
+          },
+        },
+      },
+
+      math: {
+        translations: {
+          en: "Math",
+          ar: "الرياضيات",
+        },
+      },
+    },
   },
+};
+
+
+// function createSidebarItems(
+//   structure,
+//   locale = "en",
+//   parentDirectory = "reference",
+// ) {
+//   return Object.entries(structure).map(([name, config]) => {
+//     const directory = `${parentDirectory}/${name}`;
+
+//     const translations = Object.fromEntries(
+//       Object.entries(config.translations)
+//         .filter(([lang]) => lang !== locale)
+//     );
+
+//     const item = {
+//       label: config.translations[locale],
+//       ...(Object.keys(translations).length > 0 && {
+//         translations,
+//       }),
+//     };
+
+//     if (config.items) {
+//       item.items = createSidebarItems(
+//         config.items,
+//         locale,
+//         directory,
+//       );
+//     } else {
+//       item.items = [
+//         {
+//           autogenerate: {
+//             directory,
+//           },
+//         },
+//       ];
+//     }
+
+//     return item;
+//   });
+// }
+
+const createSidebarItems = (
+  structure,
+  locale = "en",
+  parentDirectory = "reference",
+) =>
+  mapfun(
+    (config, name) => {
+      const directory = `${parentDirectory}/${name}`;
+
+      const translations = config.translations;
+
+      const item = {
+        label: translations[locale],
+        translations: Object.fromEntries(
+          Object.entries(translations).filter(
+            ([lang]) => lang !== locale
+          )
+        ),
+      };
+
+      if (config.items) {
+        item.items = createSidebarItems(
+          config.items,
+          locale,
+          directory
+        );
+      } else {
+        item.items = [
+          {
+            autogenerate: {
+              directory,
+            },
+          },
+        ];
+      }
+
+      return item;
+    },
+    structure
+  );
+
+const Reference = {
+  label: "Reference",
+
+  translations: {
+    ar: "المرجع",
+  },
+
+  items: createSidebarItems(ReferenceStructure),
 };
 
 // https://astro.build/config
 export default defineConfig({
   integrations: [
-    // ziko(),
     starlight({
-      title: "Zikojs",
+      title: "ZikoJS",
+
       editLink: {
         baseUrl: "https://github.com/zikojs/ziko/edit/main/docs/",
       },
-      //   defaultLocale: "root",
+
       locales: {
-        // English docs in `src/content/docs/en/`
         root: {
           label: "English",
           lang: "en",
         },
-        // Arabic docs in `src/content/docs/ar/`
+
         ar: {
           label: "العربية",
           dir: "rtl",
         },
       },
+
       plugins: [],
+
       customCss: ["./src/styles/custom.css"],
+
       social: [
         {
           icon: "github",
           label: "GitHub",
-          href: "https://github.com/zakarialaoui10/numz.git",
+          href: "https://github.com/zikojs/ziko",
         },
       ],
+
       sidebar: [
         {
           label: "Start Here",
-          items: [{ autogenerate: { directory: "get-started" } }],
-        },
-        {
-          label: "Core",
-          translations: {
-            ar: "نواة الإطار",
-          },
+
           items: [
             {
-              label: "overview",
-              slug: "core/overview",
-              translations: {},
-            },
-            //   {
-            //       label: "reference",
-            //       collapsed: true,
-            //       items: CoreReference.map((label) => ({
-            //           autogenerate: { directory: `core/reference/${label}` },
-            //       })),
-            //   },
-
-            {
-              label: "Reference",
-              translations: {
-                    ar: "المرجع",
-                },
-              collapsed: true,
-              items: CoreReference.map((label) => ({
-                label,
-                translations: {
-                  ar: CoreTranslations.ar[label],
-                },
-                items: [
-                  {
-                    autogenerate: {
-                      directory: `core/reference/${label}`,
-                    },
-                  },
-                ],
-              })),
+              autogenerate: {
+                directory: "get-started",
+              },
             },
           ],
         },
-        {
-          label: "Wrapper",
-          items: [{ autogenerate: { directory: "wrapper" } }],
-        },
-        {
-          label: "Server",
-          items: [{ autogenerate: { directory: "server" } }],
-        },
+
+        Reference,
       ],
     }),
-    // astroD2({}),
   ],
 
   adapter: netlify(),
