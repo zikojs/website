@@ -1,89 +1,66 @@
-export const ReferenceStructure = {
-  core: {
-    translations: {
-      en: "Core",
-      ar: "النواة",
-    },
-
-    items: {
-      ui: {
-        translations: {
-          en: "UI",
-          ar: "واجهة المستخدم",
-        },
-
-        items: {
-          "built-in-components": {
-            translations: {
-              en: "Built-in Components",
-              ar: "المكونات المدمجة",
-            },
-          },
-
-          "ui-constructors": {
-            translations: {
-              en: "UI Constructors",
-              ar: "منشئات واجهة المستخدم",
-            },
-          },
-
-          utilities: {
-            translations: {
-              en: "Utilities",
-              ar: "الأدوات المساعدة",
-            },
-          },
-        },
-      },
-
-      math: {
-        translations: {
-          en: "Math",
-          ar: "الرياضيات",
-        },
-      },
-
-      router: {
-        translations: {
-          en: "Router",
-          ar: "الموجّه",
-        },
-      },
-
-      time: {
-        translations: {
-          en: "Time",
-          ar: "الوقت",
-        },
-      },
-
-      hooks: {
-        translations: {
-          en: "Hooks",
-          ar: "الخطافات",
-        },
-      },
-
-      events: {
-        translations: {
-          en: "Events",
-          ar: "الأحداث",
-        },
-      },
-    },
+export const ReferenceTranslations = {
+  reference: {
+    en: "Reference",
+    ar: "المرجع",
   },
 
-  wrapper: {
-    translations: {
-      en: "Wrapper",
-      ar: "المغلّف",
-    },
+  "reference/core": {
+    en: "Core",
+    ar: "النواة",
   },
 
-  server: {
-    translations: {
-      en: "Server",
-      ar: "الخادم",
-    },
+  "reference/core/ui": {
+    en: "UI",
+    ar: "واجهة المستخدم",
+  },
+
+  "reference/core/ui/built-in-components": {
+    en: "Built-in Components",
+    ar: "المكونات المدمجة",
+  },
+
+  "reference/core/ui/ui-constructors": {
+    en: "UI Constructors",
+    ar: "منشئات واجهة المستخدم",
+  },
+
+  "reference/core/ui/utilities": {
+    en: "Utilities",
+    ar: "الأدوات المساعدة",
+  },
+
+  "reference/core/math": {
+    en: "Math",
+    ar: "الرياضيات",
+  },
+
+  "reference/core/router": {
+    en: "Router",
+    ar: "الموجّه",
+  },
+
+  "reference/core/time": {
+    en: "Time",
+    ar: "الوقت",
+  },
+
+  "reference/core/hooks": {
+    en: "Hooks",
+    ar: "الخطافات",
+  },
+
+  "reference/core/events": {
+    en: "Events",
+    ar: "الأحداث",
+  },
+
+  "reference/wrapper": {
+    en: "Wrapper",
+    ar: "المغلّف",
+  },
+
+  "reference/server": {
+    en: "Server",
+    ar: "الخادم",
   },
 };
