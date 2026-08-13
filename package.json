@@ -2,11 +2,11 @@
   "name": "zikojs-web",
   "private": true,
   "workspaces": [
-    "docs",
-    "blog",
-    "repl",
-    "packages/*"
+    "docs"
   ],
+  "engines": {
+    "node": "22.12.x"
+  },
   "scripts": {
     "dev:docs": "npm run dev -w docs",
     "dev:blog": "npm run dev -w blog",
