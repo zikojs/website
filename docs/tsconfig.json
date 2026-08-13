@@ -3,7 +3,6 @@
   "include": [".astro/types.d.ts", "**/*"],
   "exclude": ["dist",  "node_modules/zextra"],
   "compilerOptions": {
-    "baseUrl": ".",
     "paths": {
       "@components/*": ["./src/components/*"], // Alias for components
       "@/assets/*": ["./src/assets/*"],       // Alias for assets

@@ -1,22 +1,21 @@
 {
-  "name": "website",
-  "type": "module",
-  "version": "0.0.1",
+  "name": "zikojs-web",
+  "private": true,
+  "workspaces": [
+    "docs",
+    "blog",
+    "repl",
+    "packages/*"
+  ],
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
-  },
-  "dependencies": {
-    "@astrojs/netlify": "^8.2.1",
-    "@astrojs/starlight": "^0.41.7",
-    "astro": "^7.1.6",
-    "sharp": "^0.35.3",
-    "starlight-theme-obsidian": "^0.4.1",
-    "zextra": "^1.13.0",
-    "ziko": "^1.8.0",
-    "ziko-wrapper": "^0.35.0"
+    "dev:docs": "npm run dev -w docs",
+    "dev:blog": "npm run dev -w blog",
+    "dev:repl": "npm run dev -w repl",
+
+    "build:docs": "npm run build -w docs",
+    "build:blog": "npm run build -w blog",
+    "build:repl": "npm run build -w repl",
+
+    "build": "npm run build:docs && npm run build:blog && npm run build:repl"
   }
 }
