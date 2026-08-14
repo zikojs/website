@@ -2,6 +2,7 @@
 
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
+import ziko from 'ziko-wrapper/astro'
 import netlify from "@astrojs/netlify";
 
 import { createSidebar } from "starlight-sidebar";
@@ -15,6 +16,7 @@ import { Locales } from "@/i18n/locals";
 
 export default defineConfig({
   integrations: [
+    ziko(),
     starlight({
       title: "ZikoJS",
       editLink: {
