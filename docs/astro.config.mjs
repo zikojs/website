@@ -3,6 +3,7 @@
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
 import ziko from 'ziko-wrapper/astro'
+import liveCode from 'astro-live-code'
 import netlify from "@astrojs/netlify";
 
 import { createSidebar } from "starlight-sidebar";
@@ -15,6 +16,16 @@ import { Locales } from "@/i18n/locals";
 
 
 export default defineConfig({
+  vite: {
+    resolve: {
+      alias: [
+        {
+          find: 'astro-live-code',
+          replacement: '/src/lib',
+        },
+      ],
+    },
+  },
   integrations: [
     ziko(),
     starlight({
@@ -45,6 +56,12 @@ export default defineConfig({
         },
         createSidebar(ReferenceTranslations),
       ],
+    }),
+    liveCode({
+      defaultProps : {
+        'client:load': true 
+      },
+      imports: ['ziko']
     }),
   ],
   adapter: netlify(),

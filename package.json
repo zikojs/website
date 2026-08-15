@@ -17,6 +17,7 @@
     "build": "npm run build:docs && npm run build:blog && npm run build:repl"
   },
   "dependencies": {
+    "astro-live-code": "^0.0.6",
     "starlight-sidebar": "^1.0.0"
   }
 }
