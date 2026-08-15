@@ -14,18 +14,23 @@ import {
 
 import { Locales } from "@/i18n/locals";
 
+import path from 'path'
+import { fileURLToPath } from 'url'
+const __dirname = fileURLToPath(new URL('.', import.meta.url))
+
+
 
 export default defineConfig({
-  vite: {
-    resolve: {
-      alias: [
-        {
-          find: 'astro-live-code',
-          replacement: '/src/lib',
-        },
-      ],
-    },
-  },
+  // vite: {
+  //   resolve: {
+  //     alias: [
+  //       {
+  //         find: 'astro-live-code',
+  //         replacement: '/src/lib',
+  //       },
+  //     ],
+  //   },
+  // },
   integrations: [
     ziko(),
     starlight({
@@ -58,10 +63,10 @@ export default defineConfig({
       ],
     }),
     liveCode({
-      defaultProps : {
-        'client:load': true 
-      },
-      imports: ['ziko']
+      // defaultProps : {
+      //   'client:load': true 
+      // },
+      // imports: ['ziko']
     }),
   ],
   adapter: netlify(),

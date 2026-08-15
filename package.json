@@ -18,6 +18,8 @@
   },
   "dependencies": {
     "astro-live-code": "^0.0.6",
+    "i": "^0.3.7",
+    "npm": "^11.19.0",
     "starlight-sidebar": "^1.0.0"
   }
 }
