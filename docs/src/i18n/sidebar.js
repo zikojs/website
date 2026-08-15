@@ -3,6 +3,7 @@ export const CoreTranslation = {
     en: "Core",
     ar: "النواة",
   },
+
   "core/reference": {
     en: "Reference",
     ar: "المرجع",

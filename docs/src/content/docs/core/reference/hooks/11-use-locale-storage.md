@@ -1,6 +1,7 @@
 ---
 title: Zikojs | Hooks | useLocaleStorage
 description: useLocaleStorage
+draft : true
 sidebar:
     label : useLocaleStorage
 ---

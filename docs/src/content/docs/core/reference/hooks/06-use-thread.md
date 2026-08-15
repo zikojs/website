@@ -1,6 +1,7 @@
 ---
 title: Zikojs | Hooks | useThread
 description: useThread
+draft : true
 sidebar:
     label : useThread
 ---

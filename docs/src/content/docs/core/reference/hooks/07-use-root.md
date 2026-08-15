@@ -1,6 +1,7 @@
 ---
 title: Zikojs | Hooks | useRoot
 description: useRoot
+draft : true
 sidebar:
     label : useRoot
 ---
