@@ -3,7 +3,6 @@ title: Zikojs | UI | UIElement
 description: UIElement Methods & Getters 
 sidebar:
     label : UIElement Methods & Getters
-    order : 0
 ---
 
 ## Lifecycle 

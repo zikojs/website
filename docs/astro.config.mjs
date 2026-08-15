@@ -9,7 +9,7 @@ import netlify from "@astrojs/netlify";
 import { createSidebar } from "starlight-sidebar";
 
 import {
-  ReferenceTranslations,
+  CoreTranslation,
 } from "@/i18n/sidebar.js";
 
 import { Locales } from "@/i18n/locals";
@@ -54,7 +54,7 @@ export default defineConfig({
             },
           ],
         },
-        createSidebar(ReferenceTranslations),
+        createSidebar(CoreTranslation),
       ],
     }),
     liveCode({

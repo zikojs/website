@@ -1,65 +1,64 @@
-export const ReferenceTranslations = {
-  reference: {
+export const CoreTranslation = {
+  core: {
+    en: "Core",
+    ar: "النواة",
+  },
+  "core/reference": {
     en: "Reference",
     ar: "المرجع",
   },
 
-  "reference/core": {
-    en: "Core",
-    ar: "النواة",
-  },
-
-  "reference/core/ui": {
+  "core/reference/ui": {
     en: "UI",
     ar: "واجهة المستخدم",
   },
 
-  "reference/core/ui/built-in-components": {
-    en: "Built-in Components",
-    ar: "المكونات المدمجة",
-  },
-
-  "reference/core/ui/ui-constructors": {
+  "core/reference/ui/ui-constructors": {
     en: "UI Constructors",
     ar: "منشئات واجهة المستخدم",
   },
 
-  "reference/core/ui/utilities": {
+  "core/reference/ui/built-in-components": {
+    en: "Built-in Components",
+    ar: "المكونات المدمجة",
+  },
+
+  "core/reference/ui/utilities": {
     en: "Utilities",
     ar: "الأدوات المساعدة",
   },
 
-  "reference/core/math": {
+  "core/reference/math": {
     en: "Math",
     ar: "الرياضيات",
   },
 
-  "reference/core/router": {
+  "core/reference/router": {
     en: "Router",
     ar: "الموجّه",
   },
 
-  "reference/core/time": {
+  "core/reference/time": {
     en: "Time",
     ar: "الوقت",
   },
 
-  "reference/core/hooks": {
+  "core/reference/hooks": {
     en: "Hooks",
     ar: "الخطافات",
   },
 
-  "reference/core/events": {
+  "core/reference/events": {
     en: "Events",
     ar: "الأحداث",
   },
 
-  "reference/wrapper": {
+  "core/wrapper": {
     en: "Wrapper",
     ar: "المغلّف",
   },
 
-  "reference/server": {
+  "core/server": {
     en: "Server",
     ar: "الخادم",
   },
