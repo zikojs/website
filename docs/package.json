@@ -10,13 +10,14 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/netlify": "^8.2.1",
-    "@astrojs/starlight": "^0.41.7",
-    "astro": "^7.1.6",
-    "sharp": "^0.35.3",
-    "starlight-theme-obsidian": "^0.4.1",
-    "zextra": "^1.13.0",
-    "ziko": "^1.8.0",
-    "ziko-wrapper": "^0.35.0"
+    "@astrojs/netlify": "^8.2.7",
+    "@astrojs/starlight": "^0.42.5",
+    "@zikojs/astro": "^0.3.5",
+    "@zikojs/astro-notebook": "^0.4.1",
+    "@zikojs/notebook": "0.14.0",
+    "astro": "^7.3.6",
+    "sharp": "^0.35.5",
+    "starlight-sidebar": "^1.0.0",
+    "starlight-theme-obsidian": "^0.4.1"
   }
 }

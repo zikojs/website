@@ -5,7 +5,7 @@
     "docs"
   ],
   "engines": {
-    "node": "22.12.x"
+    "node": ">=24.15.0"
   },
   "scripts": {
     "dev:docs": "npm run dev -w docs",
@@ -15,8 +15,5 @@
     "build:blog": "npm run build -w blog",
     "build:repl": "npm run build -w repl",
     "build": "npm run build:docs && npm run build:blog && npm run build:repl"
-  },
-  "dependencies": {
-    "starlight-sidebar": "^0.3.0"
   }
 }

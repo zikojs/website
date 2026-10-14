@@ -1,0 +1,8 @@
+packages:
+  - 'docs'
+allowBuilds:
+  esbuild: false
+  sharp: false
+minimumReleaseAgeExclude:
+  - '@zikojs/astro-notebook@0.4.1'
+  - '@zikojs/notebook@0.14.0 || 0.14.1'
