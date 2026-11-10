@@ -20,8 +20,8 @@ importers:
         specifier: ^0.3.5
         version: 0.3.5(@types/node@24.19.2)(esbuild@0.28.1)(jiti@2.7.0)(supports-color@7.2.0)(yaml@2.9.1)
       '@zikojs/astro-notebook':
-        specifier: ^0.4.1
-        version: 0.4.1(supports-color@7.2.0)
+        specifier: ^0.5.0
+        version: 0.5.0(supports-color@7.2.0)
       '@zikojs/notebook':
         specifier: 0.14.0
         version: 0.14.0(supports-color@7.2.0)
@@ -1522,8 +1522,8 @@ packages:
     resolution: {integrity: sha512-VSdkwnJRr8Yv9UgB2aXB3VUPWwd6Oqnn0hycFwhg9pZgWxJXb7JmhsiXe9tmpMwjHFxli12PGcz9aI63YYloGQ==}
     engines: {node: '>=18.0.0'}
 
-  '@zikojs/astro-notebook@0.4.1':
-    resolution: {integrity: sha512-G1dszWcQ5bchdWIOm6eE+mGS6tDkTbckwuX/xn4Z+KW8BB505dsZxhLQ4WkYGl6/BmFH0Ui0NO1sm187NG5eiQ==}
+  '@zikojs/astro-notebook@0.5.0':
+    resolution: {integrity: sha512-ogp+tb3lh/kCHMhOD5LoHGtQdK/t+0kytxj4376evYiW56x4tHfbFkeXGTS5+5yvlkPkiLwMsQbMQNygRtBuOQ==}
 
   '@zikojs/astro@0.3.5':
     resolution: {integrity: sha512-zm31SJnE0YP6sGlnopM0ix0EGwPFYWkOMQkUfW1DU0oyDzJ9cQfK3xWTUIjjhLlNQTOAb937tzGsu+KXvaKABg==}
@@ -1546,8 +1546,8 @@ packages:
   '@zikojs/notebook@0.14.0':
     resolution: {integrity: sha512-alIUeDqy8F4dOn/6aMcWdO5nOYt11ZXa0W+3XCRrZT47P/g09VxK+24/Re8JveU5q7GBC2dHer767RujgMBqsg==}
 
-  '@zikojs/notebook@0.14.1':
-    resolution: {integrity: sha512-WlWdwvc0DQ7eSwEBfZ1xOoVwDowiPO6AWPRbGY0Ph0aXR346RFGqlu/0le7dcfVyRz9y73UMAZ/UtYJordm9AQ==}
+  '@zikojs/notebook@0.14.2':
+    resolution: {integrity: sha512-wgZ5q4DT3ds3waED5wPUz39gsruyCGBC5pfSjpqalPquvFg0otIXGz1HghGeRnb5MJ4o3bYYOF0wxpOO0r36lQ==}
 
   '@zikojs/server@0.6.1':
     resolution: {integrity: sha512-CKj18zucZ8YaKC4fy3CCvFQgkm6sb7pYeMkQcZY5yqp3Nwuuogl7yGeIlslP9ACqLE7ojFBnQcDyd7luWCSoJg==}
@@ -6315,9 +6315,9 @@ snapshots:
       '@whatwg-node/promise-helpers': 1.3.2
       tslib: 2.8.1
 
-  '@zikojs/astro-notebook@0.4.1(supports-color@7.2.0)':
+  '@zikojs/astro-notebook@0.5.0(supports-color@7.2.0)':
     dependencies:
-      '@zikojs/notebook': 0.14.1(supports-color@7.2.0)
+      '@zikojs/notebook': 0.14.2(supports-color@7.2.0)
       ziko: 2.0.0-beta.17.1
     transitivePeerDependencies:
       - supports-color
@@ -6391,7 +6391,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@zikojs/notebook@0.14.1(supports-color@7.2.0)':
+  '@zikojs/notebook@0.14.2(supports-color@7.2.0)':
     dependencies:
       '@codemirror/autocomplete': 6.20.3
       '@codemirror/commands': 6.11.1

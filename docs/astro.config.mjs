@@ -17,16 +17,16 @@ import zikojs from "@zikojs/astro";
 
 
 export default defineConfig({
-  vite: {
-    resolve: {
-      noExternal: ['@zikojs/astro-notebook','@zikojs/notebook', '@zikojs/console'],
-    },
-  },
   // vite: {
-  //   optimizeDeps: {
-  //     include: ["debug"],
+  //   resolve: {
+  //     noExternal: ['@zikojs/astro-notebook','@zikojs/notebook', '@zikojs/console'],
   //   },
   // },
+  vite: {
+    optimizeDeps: {
+      include: ["debug", "extend"],
+    },
+  },
   integrations: [
     zikojs(),
     starlight({
